@@ -24,7 +24,7 @@ const createTypographyComponent = <T extends ReactTag>(
   return ({ children, component, className, style, mr, ml, mt, mb, mx, my, ...rest }) => {
     const Component = component || COMPONENTS[basicClassName] || 'span'
 
-    const classNames = s[basicClassName] + ' ' + className
+    const classNames = s[basicClassName] + ' ' + className + ' ' + s.wrapper
 
     const styles = {
       ...(mr && { marginRight: mr }),

@@ -1,0 +1,97 @@
+.inputContainer{
+  position: relative;
+  width: 284px;
+}
+
+.input{
+  width: 284px;
+  height: 36px;
+
+  background: transparent;
+  border: 1px solid var(--color-dark-300);
+  border-radius: 2px;
+}
+
+.input::placeholder{
+  padding: 6px 32px 6px 12px;
+
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-m);
+  font-weight: var(--font-weight-regular);
+  font-style: normal;
+  line-height: var(--line-height-m);
+  color: var(--color-dark-100);
+}
+
+.input.search,
+.input.search::placeholder{
+  padding-left: 40px;
+}
+
+.input:active{
+  border-color: var(--color-ligth-100);
+}
+
+.input:active::placeholder {
+  color: var(--color-ligth-100);
+}
+
+.input.error{
+  border-color: var(--color-danger-300);
+}
+
+.input.error::placeholder {
+  color: var(--color-danger-300);
+}
+
+.input:hover{
+  background: var(--color-dark-700);
+  border-color: var(--color-dark-100);
+}
+
+.input:focus{
+  outline: 2px solid var(--color-info-700);
+}
+
+.label {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-regular);
+  font-style: normal;
+  line-height: var(--line-height-m);
+  color: var(--color-dark-100);
+}
+
+.iconEnd{
+  width: 20px;
+  height: 20px;
+}
+
+.iconStart{
+  position: absolute;
+  top: 50%;
+  left: 12px;
+
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+}
+
+.iconEnd, .showButton{
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  margin-top: -10px;
+}
+
+.clearButton{
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  margin-top: -9px;
+}
+
+.error{
+  margin-top: 4px;
+  color: var(--color-danger-300);
+}
