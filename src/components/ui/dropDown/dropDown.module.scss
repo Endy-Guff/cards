@@ -1,0 +1,45 @@
+.content{
+  position: relative;
+
+  padding: 0 12px;
+
+  background: var(--color-dark-700);
+  border: 1px solid var(--color-dark-500);
+  border-radius: 4px;
+}
+
+.separator{
+  height: 1px;
+  background: var(--color-dark-500);
+}
+
+.itemWrapper{
+  cursor: pointer;
+
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+
+  padding: 12px 0;
+}
+
+.arrow{
+  position: absolute;
+  top: -2.3px;
+  left: calc(50% - 10px);
+  transform: rotate(45deg);
+
+  width: 6px;
+  height: 6px;
+
+  background: var(--color-dark-700);
+  border: 1px solid var(--color-dark-500);
+  border-top: none;
+  border-left: none;
+}
+
+.triggerBtn{
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}

@@ -1,0 +1,49 @@
+.wrapper {
+  padding: 12px 0;
+  background: var(--color-dark-700);
+  border-bottom: 1px solid var(--color-dark-500);
+}
+
+.inner {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container {
+  width: 100%;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.dropdownAvaBlock{
+  display: flex;
+  gap: 8px;
+}
+
+.dropdownTextBox{
+  display: flex;
+  flex-direction: column;
+}
+
+.name{
+  position: relative;
+}
+
+.name::after{
+  content: '';
+
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+
+  width: 100%;
+
+  border: 1px dashed #fff;
+}
+
+.authBlock{
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}

@@ -16,20 +16,20 @@
   box-shadow: 0 4px 18px 0 rgb(140 97 255 / 35%);
 }
 
-.primary:active{
+.primary:active {
   background: var(--color-accent-700);
 }
 
-.primary:hover{
+.primary:hover {
   background: var(--color-accent-300);
 }
 
-.primary:disabled{
+.primary:disabled {
   color: var(--color-light-900);
   background: var(--color-accent-900);
 }
 
-.primary:focus{
+.primary:focus {
   background: var(--color-accent-500);
   outline: 2px solid var(--color-info-700);
 }
@@ -52,20 +52,20 @@
   box-shadow: 0 2px 10px 0 rgb(109 109 109 / 25%);
 }
 
-.secondary:active{
+.secondary:active {
   background: var(--color-dark-500);
 }
 
-.secondary:hover{
+.secondary:hover {
   background: var(--color-dark-100);
 }
 
-.secondary:focus{
+.secondary:focus {
   background: var(--color-dark-300);
   outline: 2px solid var(--color-info-700);
 }
 
-.secondary:disabled{
+.secondary:disabled {
   color: var(--color-light-900);
   background: var(--color-dark-300);
 }
@@ -89,12 +89,12 @@
 
 .tertiary:active {
   background: var(--color-accent-900);
-  border-color: var(--color-accent-700)
+  border-color: var(--color-accent-700);
 }
 
 .tertiary:hover {
   background: var(--color-dark-500);
-  border-color: var(--color-accent-700)
+  border-color: var(--color-accent-700);
 }
 
 .tertiary:focus {
