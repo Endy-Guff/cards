@@ -1,3 +1,3 @@
 export function App() {
-  return <div>hi</div>
+  return <div>hi!</div>
 }

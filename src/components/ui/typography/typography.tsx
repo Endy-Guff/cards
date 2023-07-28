@@ -16,12 +16,13 @@ export type TypographyProps<Ttag extends ReactTag> = {
   ml?: number | string
   mx?: number | string
   my?: number | string
+  color?: string
 } & PropsOf<Ttag>
 
 const createTypographyComponent = <T extends ReactTag>(
   basicClassName: Component
 ): FC<TypographyProps<T>> => {
-  return ({ children, component, className, style, mr, ml, mt, mb, mx, my, ...rest }) => {
+  return ({ children, component, className, style, color, mr, ml, mt, mb, mx, my, ...rest }) => {
     const Component = component || COMPONENTS[basicClassName] || 'span'
 
     const classNames = s[basicClassName] + ' ' + className + ' ' + s.wrapper
@@ -33,6 +34,7 @@ const createTypographyComponent = <T extends ReactTag>(
       ...(mb && { marginBottom: mb }),
       ...(mx && { marginRight: mx, marginLeft: mx }),
       ...(my && { marginTop: my, marginBottom: my }),
+      ...(color && { color: color }),
       ...style,
     }
 
