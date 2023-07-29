@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react'
 
 import { Typography } from '../typography'
 
-import { Select } from './select.tsx'
+import { RadioGroup } from './radioGroup.tsx'
 
 const options: { label: string; value: string }[] = [
   { label: 'Option 1', value: 'option1' },
@@ -14,10 +14,10 @@ const options: { label: string; value: string }[] = [
 ]
 
 const meta = {
-  title: 'Components/Select',
-  component: Select,
+  title: 'Components/RadioGroup',
+  component: RadioGroup,
   tags: ['autodocs'],
-} satisfies Meta<typeof Select>
+} satisfies Meta<typeof RadioGroup>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -29,28 +29,18 @@ export const Default: Story = {
 
     return (
       <>
-        <Select
-          label={'Select'}
-          placeholder={'Select value'}
-          options={options}
-          onChange={setCurrentValue}
-          value={currentValue}
-        />
+        <RadioGroup options={options} value={currentValue} onChange={setCurrentValue} />
         <Typography.Subtitle1 mt={10}>Current Value: {currentValue}</Typography.Subtitle1>
       </>
     )
   },
   args: {
-    label: 'Select',
-    placeholder: 'Select value',
     options,
   },
 }
 
 export const Disabled: Story = {
   args: {
-    label: 'Select',
-    placeholder: 'Select value',
     options,
     disabled: true,
   },
