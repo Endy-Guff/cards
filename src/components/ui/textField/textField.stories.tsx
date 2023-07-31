@@ -51,7 +51,7 @@ export const Search = {
     return (
       <>
         <TextField
-          search={true}
+          {...args}
           value={text}
           onChange={e => setText(e.currentTarget.value)}
           onClearClick={() => setText('')}

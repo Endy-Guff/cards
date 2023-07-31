@@ -64,8 +64,8 @@ export const TextField = /* @__PURE__ */ forwardRef<HTMLInputElement, TextFieldP
       error: s.error,
     }
 
-    const isShowClearButton = onClearClick && rest?.value?.length! > 0
-    const isShowPasswordButton = inputType === 'password' && rest?.value?.length! > 0
+    const isShowClearButton = onClearClick && rest?.value?.toString().length! > 0
+    const isShowPasswordButton = inputType === 'password' && rest?.value?.toString().length! > 0
 
     const dataIconStart = iconStart ? 'start' : ''
     const dataIconEnd = iconEnd || isShowClearButton ? 'end' : ''
