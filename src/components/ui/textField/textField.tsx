@@ -8,7 +8,7 @@ import { Typography } from '../typography'
 import s from './textField.module.scss'
 
 export type TextFieldProps = {
-  value?: string
+  value?: string | number
   label?: ReactNode
   errorMessage?: string
   iconStart?: ReactNode
@@ -16,7 +16,7 @@ export type TextFieldProps = {
   search?: boolean
   onEnter?: (e: KeyboardEvent<HTMLInputElement>) => void
   onClearClick?: () => void
-  type?: 'text' | 'password'
+  type?: 'text' | 'password' | 'number'
 } & ComponentProps<'input'>
 
 // НЕ УДАЛЯТЬ КОММЕНТ ПЕРЕД forwardRef - без него ломается tree shaking
@@ -37,7 +37,7 @@ export const TextField = /* @__PURE__ */ forwardRef<HTMLInputElement, TextFieldP
     },
     ref
   ) => {
-    const [type, setType] = useState<'text' | 'password'>(inputType)
+    const [type, setType] = useState<'text' | 'password' | 'number'>(inputType)
     const showPassword = () => {
       setType(type => (type === 'password' ? 'text' : 'password'))
     }
