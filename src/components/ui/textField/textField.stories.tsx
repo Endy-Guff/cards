@@ -33,11 +33,12 @@ export const Password = {
 
     return (
       <>
-        <TextField type={'password'} value={text} onChange={e => setText(e.currentTarget.value)} />
+        <TextField {...args} value={text} onChange={e => setText(e.currentTarget.value)} />
       </>
     )
   },
   args: {
+    type: 'password',
     label: 'Password',
     placeholder: 'Password',
   },
