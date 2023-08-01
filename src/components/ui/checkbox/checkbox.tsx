@@ -6,9 +6,9 @@ import Check from '../../../assets/icons/components/check.tsx'
 
 import s from './checkbox.module.scss'
 
-type CheckboxProps = {
+export type CheckboxProps = {
   checked: boolean
-  disabled: boolean
+  disabled?: boolean
   onChange: (checked: boolean) => void
   required?: boolean
   label?: string
@@ -19,7 +19,7 @@ export const Checkbox: FC<CheckboxProps> = ({
   id,
   checked,
   label,
-  disabled,
+  disabled = false,
   onChange,
   required,
 }) => {
