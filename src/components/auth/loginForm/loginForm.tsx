@@ -16,7 +16,6 @@ const loginSchema = z.object({
 
 export const LoginForm = () => {
   const {
-    register,
     handleSubmit,
     formState: { errors },
     control,
