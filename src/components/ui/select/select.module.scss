@@ -11,14 +11,14 @@
   background: transparent;
   border: 1px solid var(--dark-300, #4C4C4C);
   border-radius: 2px;
-}
 
-.trigger:hover{
-  background: var(--color-dark-500);
-}
+  &:hover{
+    background: var(--color-dark-500);
+  }
 
-.trigger:focus{
-  outline: 2px solid var(--color-info-700);
+  &:focus{
+    outline: 2px solid var(--color-info-700);
+  }
 }
 
 .wrapper{
@@ -46,11 +46,11 @@
   padding-left: 12px;
 
   background: transparent;
-}
 
-.option:hover{
-  color: var(--color-accent-300);
-  background: var(--color-accent-900);
+  &:hover{
+    color: var(--color-accent-300);
+    background: var(--color-accent-900);
+  }
 }
 
 .content{
