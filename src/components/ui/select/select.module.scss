@@ -8,17 +8,17 @@
   width: 210px;
   height: 36px;
 
-  background: transparent;
+  background: var(--color-dark-700);
   border: 1px solid var(--dark-300, #4C4C4C);
   border-radius: 2px;
-}
 
-.trigger:hover{
-  background: var(--color-dark-500);
-}
+  &:hover{
+    background: var(--color-dark-500);
+  }
 
-.trigger:focus{
-  outline: 2px solid var(--color-info-700);
+  &:focus{
+    outline: 2px solid var(--color-info-700);
+  }
 }
 
 .wrapper{
@@ -45,12 +45,14 @@
   height: 36px;
   padding-left: 12px;
 
-  background: transparent;
-}
+  background: var(--color-dark-700);
 
-.option:hover{
-  color: var(--color-accent-300);
-  background: var(--color-accent-900);
+  &:hover,
+  &:focus-visible,
+  &[data-state="checked"]{
+    color: var(--color-accent-300);
+    background: var(--color-accent-900);
+  }
 }
 
 .content{

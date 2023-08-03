@@ -3,10 +3,12 @@ type CloseIconPropsType = {
   size: number
   color: string
   disabled?: boolean
+  className?: string
 }
-export const DownIcon: FC<CloseIconPropsType> = ({ size, color, disabled }) => {
+export const DownIcon: FC<CloseIconPropsType> = ({ size, color, disabled, className }) => {
   return (
     <svg
+      className={className}
       width={size}
       height={size}
       viewBox="0 0 16 16"

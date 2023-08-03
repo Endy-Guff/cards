@@ -30,22 +30,22 @@
 
   background: var(--color-accent-500);
   border-radius: 50%;
-}
 
-.thumb::after{
-  content: '';
+  &::after{
+    content: '';
 
-  position: absolute;
-  top: 50%;
-  left: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
 
-  width: 8px;
-  height: 8px;
-  margin-top: -4px;
-  margin-left: -4px;
+    width: 8px;
+    height: 8px;
+    margin-top: -4px;
+    margin-left: -4px;
 
-  background: var(--color-light-100);
-  border-radius: 50%;
+    background: var(--color-light-100);
+    border-radius: 50%;
+  }
 }
 
 .track{
