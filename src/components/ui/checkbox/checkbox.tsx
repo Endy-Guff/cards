@@ -13,6 +13,7 @@ export type CheckboxProps = {
   required?: boolean
   label?: string
   id?: string
+  className?: string
 }
 
 export const Checkbox: FC<CheckboxProps> = ({
@@ -22,9 +23,10 @@ export const Checkbox: FC<CheckboxProps> = ({
   disabled = false,
   onChange,
   required,
+  className,
 }) => {
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+    <div className={className} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
       <CheckboxRadix.Root
         className={s.checkboxRoot}
         defaultChecked
