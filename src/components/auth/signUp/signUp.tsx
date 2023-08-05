@@ -4,24 +4,24 @@ import { DevTool } from '@hookform/devtools'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 
-import { Button, Card, ControlledCheckbox, Typography } from '../../ui'
+import { Button, Card, Typography } from '../../ui'
 import { ControlledTextField } from '../../ui/controlled/controlledTextField/controlledTextField.tsx'
-import { SignInFormSchema, signInSchema } from '../schemas.ts'
+import { SignUpFormSchema, signUpSchema } from '../schemas.ts'
 
-import s from './signIn.module.scss'
-type SignInPropsType = {
-  onSubmit: (data: SignInFormSchema) => void
+import s from './signUp.module.scss'
+type SignUpPropsType = {
+  onSubmit: (data: SignUpFormSchema) => void
 }
 
-export const SignIn: FC<SignInPropsType> = ({ onSubmit: onSubmitCallback }) => {
+export const SignUp: FC<SignUpPropsType> = ({ onSubmit: onSubmitCallback }) => {
   const {
     handleSubmit,
     formState: { errors },
     control,
-  } = useForm<SignInFormSchema>({
-    resolver: zodResolver(signInSchema),
+  } = useForm<SignUpFormSchema>({
+    resolver: zodResolver(signUpSchema),
   })
-  const onSubmit = (data: SignInFormSchema) => {
+  const onSubmit = (data: SignUpFormSchema) => {
     onSubmitCallback(data)
   }
 
@@ -32,7 +32,7 @@ export const SignIn: FC<SignInPropsType> = ({ onSubmit: onSubmitCallback }) => {
         <DevTool control={control} />
         {/* RHF devTool */}
 
-        <Typography.Large className={s.title}>Sign In</Typography.Large>
+        <Typography.Large className={s.title}>Sign Up</Typography.Large>
 
         <ControlledTextField
           control={control}
@@ -51,23 +51,23 @@ export const SignIn: FC<SignInPropsType> = ({ onSubmit: onSubmitCallback }) => {
           errorMessage={errors.password?.message}
           className={s.textField}
         />
-        <ControlledCheckbox
-          name={'rememberMe'}
+
+        <ControlledTextField
           control={control}
-          label={'rememberMe'}
-          defaultValue={false}
-          className={s.checkbox}
+          name={'confirmPassword'}
+          label={'Confirm Password'}
+          type={'password'}
+          defaultValue={''}
+          errorMessage={errors.confirmPassword?.message}
+          className={s.textField}
         />
 
-        <div className={s.forgot}>
-          <Typography.Body2>Forgot Password?</Typography.Body2>
-        </div>
         <Button className={s.btn} fullWidth={true} type="submit">
           Submit
         </Button>
         <div className={s.descBlock}>
           <Typography.Body2 color={'var(--color-light-900)'}>
-            Don&apos;t have an account?
+            Already have an account?
           </Typography.Body2>
           <Button variant={'link'}>Sign Up</Button>
         </div>

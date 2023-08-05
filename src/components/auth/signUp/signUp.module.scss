@@ -6,14 +6,7 @@
 
 .textField{
   width: 348px;
-
-  &:nth-child(4){
-    margin-bottom: 25px;
-  }
-
-  &:nth-child(5){
-    margin-bottom: 15px;
-  }
+  margin-bottom: 25px;
 }
 
 .title{
@@ -22,16 +15,8 @@
   margin-bottom: 25px;
 }
 
-.checkbox{
-  margin-bottom: 10px;
-}
-
-.forgot{
-  margin-bottom: 75px;
-  text-align: right;
-}
-
 .btn{
+  margin-top: 60px;
   margin-bottom: 20px;
 }
 
