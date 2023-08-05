@@ -9,10 +9,10 @@ type CardPropsType = {
 export const Card = (
   props: CardPropsType & Omit<ComponentPropsWithoutRef<'div'>, keyof CardPropsType>
 ) => {
-  const { children, className } = props
+  const { children, className, ...restProps } = props
 
   return (
-    <div className={`${s.wrapper} ${className}`} {...props}>
+    <div className={`${s.wrapper} ${className}`} {...restProps}>
       {children}
     </div>
   )
