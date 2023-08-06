@@ -1,2 +1,6 @@
 export * from './signIn'
 export * from './signUp'
+export * from './forgotPassword'
+export * from './checkEmail'
+export * from './newPassword'
+export * from './personalInformation'
