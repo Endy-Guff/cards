@@ -63,13 +63,13 @@ export const SignUp: FC<SignUpPropsType> = ({ onSubmit: onSubmitCallback }) => {
         />
 
         <Button className={s.btn} fullWidth={true} type="submit">
-          Submit
+          Sign Up
         </Button>
         <div className={s.descBlock}>
           <Typography.Body2 color={'var(--color-light-900)'}>
             Already have an account?
           </Typography.Body2>
-          <Button variant={'link'}>Sign Up</Button>
+          <Button variant={'link'}>Sign In</Button>
         </div>
       </form>
     </Card>
