@@ -3,6 +3,7 @@ import { z } from 'zod'
 export type SignInFormSchema = z.infer<typeof signInSchema>
 export type SignUpFormSchema = z.infer<typeof signUpSchema>
 export type ForgotPasswordFormSchema = z.infer<typeof forgotPasswordSchema>
+export type NewPasswordSchema = z.infer<typeof newPasswordSchema>
 
 export const signInSchema = z.object({
   email: z.string().email(),
@@ -23,4 +24,8 @@ export const signUpSchema = z
 
 export const forgotPasswordSchema = z.object({
   email: z.string().email(),
+})
+
+export const newPasswordSchema = z.object({
+  password: z.string().min(3),
 })
