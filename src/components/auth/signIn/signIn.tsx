@@ -63,7 +63,7 @@ export const SignIn: FC<SignInPropsType> = ({ onSubmit: onSubmitCallback }) => {
           <Typography.Body2>Forgot Password?</Typography.Body2>
         </div>
         <Button className={s.btn} fullWidth={true} type="submit">
-          Submit
+          Sign In
         </Button>
         <div className={s.descBlock}>
           <Typography.Body2 color={'var(--color-light-900)'}>
