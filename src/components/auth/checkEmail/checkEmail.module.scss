@@ -1,0 +1,24 @@
+.wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  height: 408px;
+  padding: 35px;
+}
+
+.title{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.img{
+  margin-bottom: 20px;
+}
+
+.caption{
+  margin-bottom: 65px;
+  text-align: center;
+}
