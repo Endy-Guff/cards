@@ -2,6 +2,7 @@ import { z } from 'zod'
 
 export type SignInFormSchema = z.infer<typeof signInSchema>
 export type SignUpFormSchema = z.infer<typeof signUpSchema>
+export type ForgotPasswordFormSchema = z.infer<typeof forgotPasswordSchema>
 
 export const signInSchema = z.object({
   email: z.string().email(),
@@ -19,3 +20,7 @@ export const signUpSchema = z
     message: "Passwords don't match",
     path: ['confirmPassword'],
   })
+
+export const forgotPasswordSchema = z.object({
+  email: z.string().email(),
+})
