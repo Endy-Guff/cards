@@ -9,7 +9,7 @@ type AvatarPropsType = {
   children?: ReactNode
   editMode: boolean
   size: number
-  className: string
+  className?: string
 }
 export const Avatar: FC<AvatarPropsType> = ({ avatarImg, className, editMode, children, size }) => {
   return (
