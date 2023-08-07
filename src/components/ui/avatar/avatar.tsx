@@ -14,7 +14,12 @@ type AvatarPropsType = {
 export const Avatar: FC<AvatarPropsType> = ({ avatarImg, className, editMode, children, size }) => {
   return (
     <div className={`${s.wrapper} ${className}`} style={{ width: size, height: size }}>
-      <img className={s.profilePhoto} src={avatarImg} alt="avatar" />
+      <img
+        className={s.profilePhoto}
+        src={avatarImg}
+        alt="avatar"
+        style={{ width: size, height: size }}
+      />
       <div className={s.inputBox}>
         {editMode && (
           <label className={s.label} htmlFor={'fileInput'}>
