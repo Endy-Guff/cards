@@ -26,7 +26,15 @@ export const PersonalInformation: FC<PersonalInformationPropsType> = ({
   email,
 }) => {
   const [editMode, setEditMode] = useState<boolean>(false)
+  const [avatar, setAvatar] = useState<any>(avatarImg)
+  const setAvatarCallback = (file: File) => {
+    let reader = new FileReader()
 
+    reader.onload = e => {
+      setAvatar(e.target?.result)
+    }
+    reader.readAsDataURL(file)
+  }
   const {
     handleSubmit,
     formState: { errors },
@@ -35,8 +43,10 @@ export const PersonalInformation: FC<PersonalInformationPropsType> = ({
     resolver: zodResolver(personalInformationSchema),
   })
   const onSubmit = (data: PersonalInformationSchema) => {
-    onSubmitCallback(data)
-    if (editMode) setEditMode(!editMode)
+    if (data.file === undefined) {
+      onSubmitCallback({ ...data, file: avatarImg })
+    } else onSubmitCallback(data)
+    if (editMode) setEditMode(false)
   }
 
   const changeEditMode = () => {
@@ -49,13 +59,16 @@ export const PersonalInformation: FC<PersonalInformationPropsType> = ({
         {/* RHF devTool */}
         <DevTool control={control} />
         {/* RHF devTool */}
-
         <Typography.Large className={s.title}>Personal Information</Typography.Large>
-
-        <Avatar className={s.avatar} avatarImg={avatarImg} editMode={true} size={96}>
-          <ControlledFileInput control={control} name={'file'} id={'fileInput'} />
+        <Avatar className={s.avatar} avatarImg={avatar} editMode={true} size={96}>
+          <ControlledFileInput
+            control={control}
+            name={'file'}
+            id={'fileInput'}
+            changeEditMode={setEditMode}
+            setAvatar={setAvatarCallback}
+          />
         </Avatar>
-
         {!editMode ? (
           <div className={s.informationBlock}>
             <div className={s.name}>
