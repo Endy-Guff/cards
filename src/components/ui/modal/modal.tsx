@@ -53,7 +53,7 @@ type ModalButtonBlockPropsType = {
   variant: 'first' | 'second'
   firstButtonText: string
   secondButtonText?: string
-  firstButtonCallback: () => void
+  firstButtonCallback?: () => void
   secondButtonCallback?: () => void
 }
 export const ModalButtonBlock: FC<ModalButtonBlockPropsType> = ({
