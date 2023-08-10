@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import { Meta } from '@storybook/react'
+import { reactRouterParameters, withRouter } from 'storybook-addon-react-router-v6'
 
 import { SignUpFormSchema } from '../schemas.ts'
 
@@ -9,6 +10,12 @@ import { SignUp } from './signUp.tsx'
 const meta = {
   title: 'Auth/SignUp',
   component: SignUp,
+  decorators: [withRouter],
+  parameters: {
+    reactRouter: reactRouterParameters({
+      routing: { path: '/sign-up' },
+    }),
+  },
   tags: ['autodocs'],
 } satisfies Meta<typeof SignUp>
 

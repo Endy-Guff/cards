@@ -3,6 +3,7 @@ import { FC } from 'react'
 import { DevTool } from '@hookform/devtools'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
+import { Link } from 'react-router-dom'
 
 import { Button, Card, Typography } from '../../ui'
 import { ControlledTextField } from '../../ui/controlled/controlledTextField/controlledTextField.tsx'
@@ -57,7 +58,9 @@ export const ForgotPassword: FC<ForgotPasswordPropsType> = ({ onSubmit: onSubmit
           <Typography.Body2 color={'var(--color-light-900)'}>
             Did you remember your password?
           </Typography.Body2>
-          <Button variant={'link'}>Try logging in</Button>
+          <Button className={s.link} variant={'link'} component={Link} to={'/sign-in'}>
+            Try logging in
+          </Button>
         </div>
       </form>
     </Card>

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import { Meta, StoryObj } from '@storybook/react'
+import { reactRouterParameters, withRouter } from 'storybook-addon-react-router-v6'
 
 import photo from '../../../assets/images/avatarImg.png'
 import { PersonalInformationSchema } from '../schemas.ts'
@@ -10,6 +11,12 @@ import { PersonalInformation } from './personalInformation.tsx'
 const meta = {
   title: 'Auth/PersonalInformation',
   component: PersonalInformation,
+  decorators: [withRouter],
+  parameters: {
+    reactRouter: reactRouterParameters({
+      routing: { path: '/personal-information' },
+    }),
+  },
   tags: ['autodocs'],
 } satisfies Meta<typeof PersonalInformation>
 
