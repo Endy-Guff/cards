@@ -22,7 +22,7 @@ const ListCountItemsShowOnPage = [
 export const Default: Story = {
   render: args => {
     const [currentPage, setCurrentPage] = useState<number>(1)
-    const [selectOption, setSelectOption] = useState<string>('5')
+    const [selectOption, setSelectOption] = useState<number>(5)
 
     return (
       <>
@@ -30,8 +30,8 @@ export const Default: Story = {
           {...args}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
-          countItemsShowOnPage={selectOption.toString()}
-          changeCountItemsShowOnPage={setSelectOption}
+          itemsPerPage={selectOption}
+          changeItemsPerPage={setSelectOption}
         />
       </>
     )
@@ -43,8 +43,8 @@ export const Default: Story = {
     pagesCount: number
     currentPage: number
     ListCountItemsShowOnPage: { label: number; value: string }[]
-    countItemsShowOnPage: string
+    itemsPerPage: number
     setCurrentPage?: ((page: number) => void) | undefined
-    changeCountItemsShowOnPage?: ((count: string) => void) | undefined
+    changeItemsPerPage?: ((count: number) => void) | undefined
   },
 }
