@@ -13,12 +13,6 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-const ListCountItemsShowOnPage = [
-  { value: '5', label: 5 },
-  { value: '10', label: 10 },
-  { value: '15', label: 15 },
-]
-
 export const Default: Story = {
   render: args => {
     const [currentPage, setCurrentPage] = useState<number>(1)
@@ -38,11 +32,9 @@ export const Default: Story = {
   },
   args: {
     pagesCount: 20,
-    ListCountItemsShowOnPage,
   } as {
     pagesCount: number
     currentPage: number
-    ListCountItemsShowOnPage: { label: number; value: string }[]
     itemsPerPage: number
     setCurrentPage?: ((page: number) => void) | undefined
     changeItemsPerPage?: ((count: number) => void) | undefined
