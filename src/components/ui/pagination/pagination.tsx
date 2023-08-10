@@ -10,23 +10,32 @@ type PaginationPropsType = {
   pagesCount: number
   currentPage: number
   setCurrentPage: (page: number) => void
-  ListCountItemsShowOnPage: { label: number; value: string }[]
-  countItemsShowOnPage: string
-  changeCountItemsShowOnPage: (count: string) => void
+  itemsPerPage: number
+  changeItemsPerPage: (count: number) => void
 }
 
 export const Pagination: FC<PaginationPropsType> = ({
   pagesCount,
   currentPage,
   setCurrentPage,
-  ListCountItemsShowOnPage,
-  countItemsShowOnPage,
-  changeCountItemsShowOnPage,
+  itemsPerPage,
+  changeItemsPerPage,
 }) => {
+  const listItemsPerPage = [
+    { value: '5', label: 5 },
+    { value: '10', label: 10 },
+    { value: '15', label: 15 },
+    { value: '20', label: 20 },
+  ]
+
   const pages: number[] = []
 
   for (let i = 1; i <= pagesCount; i++) {
     pages.push(i)
+  }
+
+  const changeItemsPerPageHandler = (count: string) => {
+    changeItemsPerPage(+count)
   }
 
   return (
@@ -95,11 +104,11 @@ export const Pagination: FC<PaginationPropsType> = ({
       </button>
       <Select
         placeholder={''}
-        options={ListCountItemsShowOnPage}
+        options={listItemsPerPage}
         width={48}
         height={24}
-        value={countItemsShowOnPage}
-        onChange={changeCountItemsShowOnPage}
+        value={itemsPerPage.toString()}
+        onChange={changeItemsPerPageHandler}
       />
     </div>
   )

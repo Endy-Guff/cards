@@ -3,6 +3,7 @@ import { FC } from 'react'
 import { DevTool } from '@hookform/devtools'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
+import { Link } from 'react-router-dom'
 
 import { Button, Card, ControlledCheckbox, Typography } from '../../ui'
 import { ControlledTextField } from '../../ui/controlled/controlledTextField/controlledTextField.tsx'
@@ -69,7 +70,9 @@ export const SignIn: FC<SignInPropsType> = ({ onSubmit: onSubmitCallback }) => {
           <Typography.Body2 color={'var(--color-light-900)'}>
             Don&apos;t have an account?
           </Typography.Body2>
-          <Button variant={'link'}>Sign Up</Button>
+          <Button className={s.link} variant={'link'} component={Link} to={'/sign-up'}>
+            Sign Up
+          </Button>
         </div>
       </form>
     </Card>

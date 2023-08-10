@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import { Meta } from '@storybook/react'
+import { reactRouterParameters, withRouter } from 'storybook-addon-react-router-v6'
 
 import { ForgotPasswordFormSchema } from '../schemas.ts'
 
@@ -9,6 +10,12 @@ import { ForgotPassword } from './forgotPassword.tsx'
 const meta = {
   title: 'Auth/ForgotPassword',
   component: ForgotPassword,
+  decorators: [withRouter],
+  parameters: {
+    reactRouter: reactRouterParameters({
+      routing: { path: '/forgot-password' },
+    }),
+  },
   tags: ['autodocs'],
 } satisfies Meta<typeof ForgotPassword>
 

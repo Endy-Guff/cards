@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import type { Meta } from '@storybook/react'
+import { reactRouterParameters, withRouter } from 'storybook-addon-react-router-v6'
 
 import { SignInFormSchema } from '../schemas.ts'
 
@@ -9,6 +10,12 @@ import { SignIn } from './signIn.tsx'
 const meta = {
   title: 'Auth/SignIn',
   component: SignIn,
+  decorators: [withRouter],
+  parameters: {
+    reactRouter: reactRouterParameters({
+      routing: { path: '/sign-in' },
+    }),
+  },
   tags: ['autodocs'],
 } satisfies Meta<typeof SignIn>
 
