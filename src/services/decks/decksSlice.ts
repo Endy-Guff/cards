@@ -4,6 +4,12 @@ const initialState = {
   currentPage: 1,
   itemsPerPage: 15,
   searchByName: '',
+  minMaxCardsCount: [0, 20],
+  authorId: '',
+  showPacksCardsFilter: [
+    { value: 'myCards', title: 'My Cards' },
+    { value: 'allCards', title: 'All Cards' },
+  ],
 }
 
 export const decksSlice = createSlice({
@@ -17,8 +23,13 @@ export const decksSlice = createSlice({
       state.itemsPerPage = action.payload.itemsPerPage
     },
     setSearchByName: (state, action: PayloadAction<{ searchByName: string }>) => {
-      debugger
       state.searchByName = action.payload.searchByName
+    },
+    setMinMaxCardsCount: (state, action: PayloadAction<{ value: number[] }>) => {
+      state.minMaxCardsCount = action.payload.value
+    },
+    setAuthorId: (state, action: PayloadAction<{ id: string }>) => {
+      state.authorId = action.payload.id
     },
   },
 })

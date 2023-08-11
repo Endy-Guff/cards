@@ -4,6 +4,7 @@ import { FC } from 'react'
 import * as SliderRadix from '@radix-ui/react-slider'
 
 import { TextField } from '../textField'
+import { Typography } from '../typography'
 
 import s from './slider.module.scss'
 
@@ -12,8 +13,9 @@ type SliderPropsType = {
   value: number[]
   min: number
   max: number
+  label?: string
 }
-export const Slider: FC<SliderPropsType> = ({ onChange, min, max, value }) => {
+export const Slider: FC<SliderPropsType> = ({ onChange, label, min, max, value }) => {
   const changeIndicator = (payload: { type: 'min' | 'max'; value: number }) => {
     switch (payload.type) {
       case 'min':
@@ -31,6 +33,11 @@ export const Slider: FC<SliderPropsType> = ({ onChange, min, max, value }) => {
 
   return (
     <div className={s.wrapper}>
+      {label && (
+        <span className={s.label}>
+          <Typography.Body2>{label}</Typography.Body2>
+        </span>
+      )}
       <div className={s.indicator}>
         <TextField
           style={{ textAlign: 'center' }}

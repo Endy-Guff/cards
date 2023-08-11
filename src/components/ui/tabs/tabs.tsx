@@ -17,31 +17,46 @@ type TabsPropsType = {
   value?: string
   onValueChange?: (value: string) => void
   children?: ReactNode
+  label?: string
 }
-export const Tabs: FC<TabsPropsType> = ({ tabs, children, value, onValueChange, defaultValue }) => {
+export const Tabs: FC<TabsPropsType> = ({
+  label,
+  tabs,
+  children,
+  value,
+  onValueChange,
+  defaultValue,
+}) => {
   return (
-    <TabsRadix.Root
-      className={s.root}
-      value={value}
-      defaultValue={defaultValue}
-      onValueChange={onValueChange}
-    >
-      <TabsRadix.List className={s.list}>
-        {tabs.map(tab => {
-          return (
-            <TabsRadix.Trigger
-              className={s.trigger}
-              value={tab.value}
-              key={tab.value}
-              disabled={tab.disabled}
-            >
-              {tab.title}
-            </TabsRadix.Trigger>
-          )
-        })}
-      </TabsRadix.List>
-      {children}
-    </TabsRadix.Root>
+    <div className={s.wrapper}>
+      {label && (
+        <span className={s.label}>
+          <Typography.Body2>{label}</Typography.Body2>
+        </span>
+      )}
+      <TabsRadix.Root
+        className={s.root}
+        value={value}
+        defaultValue={defaultValue}
+        onValueChange={onValueChange}
+      >
+        <TabsRadix.List className={s.list}>
+          {tabs.map(tab => {
+            return (
+              <TabsRadix.Trigger
+                className={s.trigger}
+                value={tab.value}
+                key={tab.value}
+                disabled={tab.disabled}
+              >
+                {tab.title}
+              </TabsRadix.Trigger>
+            )
+          })}
+        </TabsRadix.List>
+        {children}
+      </TabsRadix.Root>
+    </div>
   )
 }
 

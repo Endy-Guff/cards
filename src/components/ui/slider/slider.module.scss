@@ -1,8 +1,17 @@
 .wrapper{
+  position: relative;
+
   display: flex;
   gap: 12px;
   align-items: center;
+
   width: 250px;
+}
+
+.label{
+  position: absolute;
+  top: -29px;
+  left: 0;
 }
 
 .root{
