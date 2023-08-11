@@ -28,15 +28,18 @@ export const Default: Story = {
   args: {
     min,
     max,
+    label: 'Label',
   } as Partial<{
     onChange: (numbers: number[]) => void
     value?: number[]
     min: number
     max: number
+    label: string
   }> & {
     value: number[]
     min: number
     max: number
+    label: string
     onChange?: ((numbers: number[]) => void) | undefined
   },
 }

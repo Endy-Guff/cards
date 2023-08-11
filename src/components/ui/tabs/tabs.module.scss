@@ -1,3 +1,13 @@
+.wrapper{
+  position: relative;
+}
+
+.label{
+  position: absolute;
+  top: -29px;
+  left: 0;
+}
+
 .trigger{
   cursor: pointer;
 
@@ -33,5 +43,9 @@
   &:disabled{
     color: var(--color-dark-300);
     background: var(--color-dark-700);
+  }
+
+  &[data-state='active']{
+    background: var(--color-accent-500);
   }
 }
