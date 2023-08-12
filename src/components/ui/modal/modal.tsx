@@ -37,7 +37,7 @@ export const Modal: FC<ModalPropsType> = ({
                 <div className={s.headerInner}>
                   <Dialog.Title>{title}</Dialog.Title>
                   {showCloseButton && (
-                    <Dialog.Close>
+                    <Dialog.Close className={s.closeBtn}>
                       <CloseIcon size={24} color={'var(--color-light-100)'} />
                     </Dialog.Close>
                   )}
