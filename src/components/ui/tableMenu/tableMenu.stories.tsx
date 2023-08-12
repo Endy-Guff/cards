@@ -16,13 +16,13 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   render: args => {
     const [message, setMessage] = useState<string>('')
-    const deleteCallback = (id: number) => {
+    const deleteCallback = (id: string) => {
       setMessage(`action: deleteCallback with id ${id}`)
     }
-    const changeCallback = (id: number) => {
+    const changeCallback = (id: string) => {
       setMessage(`action: changeCallback with id ${id}`)
     }
-    const playCallback = (id: number) => {
+    const playCallback = (id: string) => {
       setMessage(`action: playCallback with id ${id}`)
     }
 
@@ -39,6 +39,6 @@ export const Default: Story = {
     )
   },
   args: {
-    id: 22,
+    id: '222123',
   },
 }

@@ -36,7 +36,7 @@ export const Default: Story = {
             <Table.Cell>Ivan Ivanov</Table.Cell>
             <Table.Cell>
               <TableMenu
-                id={1}
+                id={'id-1'}
                 deleteCallback={() => {}}
                 changeCallback={() => {}}
                 playCallback={() => {}}
@@ -50,7 +50,7 @@ export const Default: Story = {
             <Table.Cell>Ivan Ivanov</Table.Cell>
             <Table.Cell>
               <TableMenu
-                id={1}
+                id={'id-2'}
                 deleteCallback={() => {}}
                 changeCallback={() => {}}
                 playCallback={() => {}}
@@ -64,7 +64,7 @@ export const Default: Story = {
             <Table.Cell>Ivan Ivanov</Table.Cell>
             <Table.Cell>
               <TableMenu
-                id={1}
+                id={'id-3'}
                 deleteCallback={() => {}}
                 changeCallback={() => {}}
                 playCallback={() => {}}
@@ -78,9 +78,27 @@ export const Default: Story = {
 }
 
 const data = [
-  { id: 1, name: 'Pack Name 1', cardsCount: 4, lastUpdated: '18.03.2021', creator: 'Ivan Ivanov' },
-  { id: 2, name: 'Pack Name 2', cardsCount: 4, lastUpdated: '18.03.2021', creator: 'Ivan Ivanov' },
-  { id: 3, name: 'Pack Name 3', cardsCount: 4, lastUpdated: '18.03.2021', creator: 'Ivan Ivanov' },
+  {
+    id: 'id-1',
+    name: 'Pack Name 1',
+    cardsCount: 4,
+    lastUpdated: '18.03.2021',
+    creator: 'Ivan Ivanov',
+  },
+  {
+    id: 'id-2',
+    name: 'Pack Name 2',
+    cardsCount: 4,
+    lastUpdated: '18.03.2021',
+    creator: 'Ivan Ivanov',
+  },
+  {
+    id: 'id-3',
+    name: 'Pack Name 3',
+    cardsCount: 4,
+    lastUpdated: '18.03.2021',
+    creator: 'Ivan Ivanov',
+  },
 ]
 
 export const TableWithMappedData: Story = {
