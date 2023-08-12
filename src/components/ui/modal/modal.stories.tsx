@@ -51,9 +51,21 @@ export const Default: Story = {
 }
 
 export const WithButtons: Story = {
+  render: args => {
+    const [isOpen, setIsOpen] = useState<boolean>(false)
+
+    return (
+      <>
+        <Button variant={'primary'} onClick={() => setIsOpen(true)}>
+          Show modal
+        </Button>
+        <Modal {...args} open={isOpen} closeModal={() => setIsOpen(false)} />
+      </>
+    )
+  },
   args: {
     size: 'lg',
-    open: true,
+    open: false,
     title: 'Modal With Buttons',
     children: (
       <div>

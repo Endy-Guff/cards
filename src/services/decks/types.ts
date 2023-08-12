@@ -39,3 +39,6 @@ export type DecksResponseItem = {
 }
 
 export type DeleteDeckResponse = Omit<DecksResponseItem, 'isDeleted' | 'isBlocked' | 'author'>
+
+export type UpdateDeckArgs = CreateDeckArgs & { id: string }
+export type UpdateDeckResponse = Omit<DecksResponseItem, 'isDeleted' | 'isBlocked'>

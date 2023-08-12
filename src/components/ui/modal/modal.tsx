@@ -1,5 +1,7 @@
 import { FC, ReactNode } from 'react'
 
+import * as Dialog from '@radix-ui/react-dialog'
+
 import { CloseIcon } from '../../../assets/icons/components/closeIcon.tsx'
 import { Button } from '../button'
 
@@ -24,28 +26,31 @@ export const Modal: FC<ModalPropsType> = ({
   size = 'md',
   showHeader = true,
 }) => {
-  return open ? (
-    <div className={s.wrapper}>
-      <div className={`${s.inner} ${getSizeClassName(size)} ${open && s.open}`}>
-        {showHeader && (
-          <div className={s.header}>
-            <div className={s.headerInner}>
-              {title}
-              {showCloseButton && (
-                <button className={s.closeBtn} onClick={closeModal}>
-                  <CloseIcon size={24} color={'var(--color-light-100)'} />
-                </button>
-              )}
+  return (
+    <Dialog.Root open={open} onOpenChange={closeModal}>
+      {open && (
+        <Dialog.Portal>
+          <Dialog.Overlay className={s.overlay} />
+          <Dialog.Content className={`${s.inner} ${getSizeClassName(size)}`}>
+            {showHeader && (
+              <div className={s.header}>
+                <div className={s.headerInner}>
+                  <Dialog.Title>{title}</Dialog.Title>
+                  {showCloseButton && (
+                    <Dialog.Close className={s.closeBtn}>
+                      <CloseIcon size={24} color={'var(--color-light-100)'} />
+                    </Dialog.Close>
+                  )}
+                </div>
+              </div>
+            )}
+            <div className={s.content}>
+              <div className={s.contentInner}>{children}</div>
             </div>
-          </div>
-        )}
-        <div className={s.content}>
-          <div className={s.contentInner}>{children}</div>
-        </div>
-      </div>
-    </div>
-  ) : (
-    <></>
+          </Dialog.Content>
+        </Dialog.Portal>
+      )}
+    </Dialog.Root>
   )
 }
 
