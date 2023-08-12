@@ -1,12 +1,10 @@
-import { Provider } from 'react-redux'
-
 import { Router } from './router.tsx'
-import { store } from './services/store.ts'
+import { useGetMeQuery } from './services/auth'
 
 export function App() {
-  return (
-    <Provider store={store}>
-      <Router />
-    </Provider>
-  )
+  const { isLoading, data } = useGetMeQuery()
+
+  if (isLoading) return <div>Loading...</div>
+
+  return <Router meData={data} />
 }

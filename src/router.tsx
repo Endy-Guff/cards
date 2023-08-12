@@ -1,3 +1,5 @@
+import { FC } from 'react'
+
 import {
   createBrowserRouter,
   Navigate,
@@ -8,6 +10,7 @@ import {
 
 import { SignIn } from './components'
 import { Decks } from './pages/decks/decks.tsx'
+import { MeResponse } from './services/auth/types.ts'
 
 const publicRoutes: RouteObject[] = [
   {
@@ -28,7 +31,8 @@ const router = createBrowserRouter([
   ...publicRoutes,
 ])
 
-export const Router = () => {
+type RouterPropsType = { meData: MeResponse | undefined }
+export const Router: FC<RouterPropsType> = () => {
   return <RouterProvider router={router} />
 }
 
