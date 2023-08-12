@@ -7,10 +7,10 @@ import { PlayIcon } from '../../../assets/icons/components/playIcon.tsx'
 import s from './tableMenu.module.scss'
 
 type TableMenuPropsType = {
-  id: number
-  deleteCallback: (id: number) => void
-  changeCallback: (id: number) => void
-  playCallback: (id: number) => void
+  id: string
+  deleteCallback?: (id: string) => void
+  changeCallback?: (id: string) => void
+  playCallback?: (id: string) => void
 }
 
 export const TableMenu: FC<TableMenuPropsType> = ({
@@ -21,15 +21,21 @@ export const TableMenu: FC<TableMenuPropsType> = ({
 }) => {
   return (
     <div className={s.wrapper}>
-      <button className={s.btn} onClick={() => playCallback(id)}>
-        <PlayIcon size={16} color={'var(--color-light-100)'} />
-      </button>
-      <button className={s.btn} onClick={() => changeCallback(id)}>
-        <EditIcon size={16} color={'var(--color-light-100)'} />
-      </button>
-      <button className={s.btn} onClick={() => deleteCallback(id)}>
-        <DeleteIcon size={16} color={'var(--color-light-100)'} />
-      </button>
+      {playCallback && (
+        <button className={s.btn} onClick={() => playCallback(id)}>
+          <PlayIcon size={16} color={'var(--color-light-100)'} />
+        </button>
+      )}
+      {changeCallback && (
+        <button className={s.btn} onClick={() => changeCallback(id)}>
+          <EditIcon size={16} color={'var(--color-light-100)'} />
+        </button>
+      )}
+      {deleteCallback && (
+        <button className={s.btn} onClick={() => deleteCallback(id)}>
+          <DeleteIcon size={16} color={'var(--color-light-100)'} />
+        </button>
+      )}
     </div>
   )
 }
