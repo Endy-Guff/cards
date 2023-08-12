@@ -3,17 +3,20 @@ import { FC, useEffect, useState } from 'react'
 import { DeleteIcon } from '../../../assets/icons/components/deleteIcon.tsx'
 import useDebounce from '../../../common/hooks/useDebounce.tsx'
 import { Button, Slider, Tabs, TextField } from '../../../components'
+import { useGetMeQuery } from '../../../services/auth'
 import { decksActions, DecksSliceStateType } from '../../../services/decks/decksSlice.ts'
 import { useAppDispatch, useAppSelector } from '../../../services/store.ts'
 
 type DecksToolBarPropsType = {}
 
 export const DecksToolBar: FC<DecksToolBarPropsType> = ({}) => {
+  const { data: meData } = useGetMeQuery()
+
   const { searchByName, showPacksCardsFilter } = useAppSelector<DecksSliceStateType>(
     state => state.decksSlice
   )
   const dispatch = useAppDispatch()
-  const { setSearchByName, setMinMaxCardsCount } = decksActions
+  const { setSearchByName, setMinMaxCardsCount, setAuthorId } = decksActions
 
   const [selectedTab, setSelectedTab] = useState<string>(showPacksCardsFilter[1].value)
   const [searchValue, setSearchValue] = useState<string>(searchByName)
@@ -23,8 +26,11 @@ export const DecksToolBar: FC<DecksToolBarPropsType> = ({}) => {
 
   useEffect(() => {
     dispatch(setSearchByName({ searchByName: debounceSearchValue }))
-    dispatch(setMinMaxCardsCount({ value: sliderValue }))
-  }, [debounceSearchValue, debounceSliderValue])
+    dispatch(setMinMaxCardsCount({ value: debounceSliderValue }))
+    if (selectedTab === showPacksCardsFilter[0].value && meData) {
+      dispatch(setAuthorId({ id: meData.id }))
+    } else dispatch(setAuthorId({ id: '' }))
+  }, [debounceSearchValue, debounceSliderValue, selectedTab])
   const onSearchHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.currentTarget.value)
   }
