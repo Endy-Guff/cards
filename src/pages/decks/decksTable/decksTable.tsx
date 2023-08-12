@@ -3,6 +3,8 @@ import { FC } from 'react'
 import { Table } from '../../../components'
 import { DecksResponse } from '../../../services/decks/types.ts'
 
+import { DecksItem } from './decksItem/decksItem.tsx'
+
 type DecksTablePropsType = {
   data: DecksResponse | undefined
 }
@@ -20,17 +22,7 @@ export const DecksTable: FC<DecksTablePropsType> = ({ data }) => {
           </Table.Row>
         </Table.Head>
         <Table.Body>
-          {data?.items.map(({ name, author, cardsCount, updated, id }) => {
-            return (
-              <Table.Row key={id}>
-                <Table.Cell>{name}</Table.Cell>
-                <Table.Cell>{cardsCount}</Table.Cell>
-                <Table.Cell>{new Date(updated).toLocaleDateString('ru-Ru')}</Table.Cell>
-                <Table.Cell>{author.name}</Table.Cell>
-                <Table.Cell></Table.Cell>
-              </Table.Row>
-            )
-          })}
+          <DecksItem data={data} />
         </Table.Body>
       </Table.Root>
     </>

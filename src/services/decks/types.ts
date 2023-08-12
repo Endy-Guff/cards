@@ -37,3 +37,5 @@ export type DecksResponseItem = {
   cardsCount: number
   author: DecksResponseItemAuthor
 }
+
+export type DeleteDeckResponse = Omit<DecksResponseItem, 'isDeleted' | 'isBlocked' | 'author'>
