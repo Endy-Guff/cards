@@ -1,25 +1,32 @@
 import { FC, Fragment, useState } from 'react'
 
+import { useNavigate } from 'react-router-dom'
+
 import { AddPackSchema } from '../../../../common/formSchemas/formSchemas.ts'
 import { Table, TableMenu } from '../../../../components'
 import { useGetMeQuery } from '../../../../services/auth'
 import { useDeleteDeckMutation, useUpdateDeckMutation } from '../../../../services/decks'
 import { DecksResponse } from '../../../../services/decks/types.ts'
 
+import { DeleteDecksModal } from './deleteDecksModal/deleteDecksModal.tsx'
 import { EditDecksModal } from './editDecksModal/editDecksModal.tsx'
 
 type DecksItemPropsType = {
   data: DecksResponse | undefined
 }
 export const DecksItem: FC<DecksItemPropsType> = ({ data }) => {
+  const navigate = useNavigate()
   const { data: meData } = useGetMeQuery()
   const [deleteDeck] = useDeleteDeckMutation()
   const [updateDeck] = useUpdateDeckMutation()
 
+  const [deleteDeckModalIsOpen, setDeleteDeckModalIsOpen] = useState<boolean>(false)
   const [editDeckModalIsOpen, setEditDeckModalIsOpen] = useState<boolean>(false)
   const [editDeckId, setEditDeckId] = useState<string>('')
-  const deleteDeckHandler = (id: string) => {
-    deleteDeck({ id: id })
+  const [deleteDeckId, setDeleteDeckId] = useState<string>('')
+  const showDeleteDeckModal = (id: string) => {
+    setDeleteDeckId(id)
+    setDeleteDeckModalIsOpen(true)
   }
   const openEditDeckModalHandler = (id: string) => {
     setEditDeckId(id)
@@ -30,7 +37,15 @@ export const DecksItem: FC<DecksItemPropsType> = ({ data }) => {
     updateDeck({ name: data.namePack, id: editDeckId, isPrivate: data.private })
   }
 
+  const deleteDeckHandler = () => {
+    deleteDeck({ id: deleteDeckId })
+  }
+
   const mappedItems = data?.items.map(({ name, author, cardsCount, updated, id }) => {
+    const onDeckClickHandler = () => {
+      navigate(`deck/${id}`)
+    }
+
     return (
       <Fragment key={id}>
         <EditDecksModal
@@ -38,7 +53,12 @@ export const DecksItem: FC<DecksItemPropsType> = ({ data }) => {
           onClose={() => setEditDeckModalIsOpen(false)}
           onSubmitCallback={updateDeckFormSubmit}
         />
-        <Table.Row key={id}>
+        <DeleteDecksModal
+          open={deleteDeckId === id ? deleteDeckModalIsOpen : false}
+          onClose={() => setDeleteDeckModalIsOpen(false)}
+          deleteDeck={deleteDeckHandler}
+        />
+        <Table.Row key={id} onClick={onDeckClickHandler}>
           <Table.Cell>{name}</Table.Cell>
           <Table.Cell>{cardsCount}</Table.Cell>
           <Table.Cell>{new Date(updated).toLocaleDateString('ru-Ru')}</Table.Cell>
@@ -47,7 +67,7 @@ export const DecksItem: FC<DecksItemPropsType> = ({ data }) => {
             {author.id === meData?.id && (
               <TableMenu
                 id={id}
-                deleteCallback={deleteDeckHandler}
+                deleteCallback={showDeleteDeckModal}
                 changeCallback={openEditDeckModalHandler}
               />
             )}

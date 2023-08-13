@@ -27,12 +27,24 @@ export const TableMenu: FC<TableMenuPropsType> = ({
         </button>
       )}
       {changeCallback && (
-        <button className={s.btn} onClick={() => changeCallback(id)}>
+        <button
+          className={s.btn}
+          onClick={e => {
+            e.stopPropagation()
+            changeCallback(id)
+          }}
+        >
           <EditIcon size={16} color={'var(--color-light-100)'} />
         </button>
       )}
       {deleteCallback && (
-        <button className={s.btn} onClick={() => deleteCallback(id)}>
+        <button
+          className={s.btn}
+          onClick={e => {
+            e.stopPropagation()
+            deleteCallback(id)
+          }}
+        >
           <DeleteIcon size={16} color={'var(--color-light-100)'} />
         </button>
       )}
