@@ -1,6 +1,6 @@
 import { baseApi } from '../baseApi.ts'
 
-import { CardsResponse, GetCardsArgs } from './types.ts'
+import { Card, CardsResponse, CreateCardArgs, GetCardsArgs } from './types.ts'
 
 const cardsApi = baseApi.injectEndpoints({
   endpoints: builder => {
@@ -12,9 +12,29 @@ const cardsApi = baseApi.injectEndpoints({
             params: { itemsPerPage, currentPage },
           }
         },
+        providesTags: ['Cards'],
+      }),
+      createCard: builder.mutation<Card, CreateCardArgs>({
+        query: ({ id, question, answer }) => {
+          return {
+            url: `/v1/decks/${id}/cards`,
+            method: 'POST',
+            body: { question, answer },
+          }
+        },
+        invalidatesTags: ['Cards'],
+      }),
+      deleteCard: builder.mutation<any, { id: string }>({
+        query: ({ id }) => {
+          return {
+            url: `/v1/cards/${id}`,
+            method: 'DELETE',
+          }
+        },
+        invalidatesTags: ['Cards'],
       }),
     }
   },
 })
 
-export const { useGetCardsQuery } = cardsApi
+export const { useGetCardsQuery, useCreateCardMutation, useDeleteCardMutation } = cardsApi
