@@ -8,18 +8,22 @@ type PagesHeaderPropsType = {
   buttonCallback: () => void
   children: ReactNode
   buttonTitle: string
+  showButton?: boolean
 }
 export const PagesHeader: FC<PagesHeaderPropsType> = ({
   buttonCallback,
   children,
   buttonTitle,
+  showButton = true,
 }) => {
   return (
     <div className={s.wrapper}>
       {children}
-      <Button variant={'primary'} onClick={buttonCallback}>
-        {buttonTitle}
-      </Button>
+      {showButton && (
+        <Button variant={'primary'} onClick={buttonCallback}>
+          {buttonTitle}
+        </Button>
+      )}
     </div>
   )
 }

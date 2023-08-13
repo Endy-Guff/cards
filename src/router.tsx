@@ -9,6 +9,7 @@ import {
 } from 'react-router-dom'
 
 import { SignIn } from './components'
+import { Cards } from './pages/cards/cards.tsx'
 import { Decks } from './pages/decks/decks.tsx'
 import { MeResponse } from './services/auth/types.ts'
 
@@ -23,6 +24,10 @@ const privateRoutes: RouteObject[] = [
   {
     path: '/',
     element: <Decks />,
+  },
+  {
+    path: '/deck/:deckId',
+    element: <Cards />,
   },
 ]
 

@@ -3,7 +3,7 @@ import { baseApi } from '../baseApi.ts'
 import {
   CreateDeckArgs,
   DecksResponse,
-  DecksResponseItem,
+  Deck,
   DeleteDeckResponse,
   GetDecksArgs,
   UpdateDeckArgs,
@@ -22,7 +22,7 @@ const decksApi = baseApi.injectEndpoints({
         },
         providesTags: ['Decks'],
       }),
-      createDeck: builder.mutation<DecksResponseItem, CreateDeckArgs>({
+      createDeck: builder.mutation<Deck, CreateDeckArgs>({
         query: ({ name, isPrivate }) => {
           return {
             url: 'v1/decks',
@@ -51,6 +51,13 @@ const decksApi = baseApi.injectEndpoints({
         },
         invalidatesTags: ['Decks'],
       }),
+      getDeckById: builder.query<Deck, { id: string }>({
+        query: ({ id }) => {
+          return {
+            url: `v1/decks/${id}`,
+          }
+        },
+      }),
     }
   },
 })
@@ -60,4 +67,5 @@ export const {
   useCreateDeckMutation,
   useDeleteDeckMutation,
   useUpdateDeckMutation,
+  useGetDeckByIdQuery,
 } = decksApi
