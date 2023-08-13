@@ -15,14 +15,14 @@ export type CreateDeckArgs = {
   isPrivate: boolean
 }
 
-export type DecksResponse = PaginationEntity<DecksResponseItem> & {
+export type DecksResponse = PaginationEntity<Deck> & {
   maxCardsCount: number
 }
 export type DecksResponseItemAuthor = {
   id: string
   name: string
 }
-export type DecksResponseItem = {
+export type Deck = {
   id: string
   userId: string
   name: string
@@ -38,7 +38,7 @@ export type DecksResponseItem = {
   author: DecksResponseItemAuthor
 }
 
-export type DeleteDeckResponse = Omit<DecksResponseItem, 'isDeleted' | 'isBlocked' | 'author'>
+export type DeleteDeckResponse = Omit<Deck, 'isDeleted' | 'isBlocked' | 'author'>
 
 export type UpdateDeckArgs = CreateDeckArgs & { id: string }
-export type UpdateDeckResponse = Omit<DecksResponseItem, 'isDeleted' | 'isBlocked'>
+export type UpdateDeckResponse = Omit<Deck, 'isDeleted' | 'isBlocked'>
