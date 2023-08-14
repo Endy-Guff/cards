@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { Modal, ModalButtonBlock, Typography } from '../../../../../components'
+import { Modal, ModalButtonBlock, Typography } from '../../../components'
 
 type DeleteDecksModalPropsType = {
   open: boolean
