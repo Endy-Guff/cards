@@ -3,9 +3,9 @@ import { FC } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 
-import { addPackSchema, AddPackSchema } from '../../../../../common/formSchemas/formSchemas.ts'
-import { ControlledCheckbox, Modal, ModalButtonBlock } from '../../../../../components'
-import { ControlledTextField } from '../../../../../components/ui/controlled/controlledTextField/controlledTextField.tsx'
+import { addPackSchema, AddPackSchema } from '../../../common/formSchemas/formSchemas.ts'
+import { ControlledCheckbox, Modal, ModalButtonBlock } from '../../../components'
+import { ControlledTextField } from '../../../components/ui/controlled/controlledTextField/controlledTextField.tsx'
 
 import s from './editDecksModal.module.scss'
 

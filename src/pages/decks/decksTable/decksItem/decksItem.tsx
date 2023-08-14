@@ -7,9 +7,8 @@ import { Table, TableMenu } from '../../../../components'
 import { useGetMeQuery } from '../../../../services/auth'
 import { useDeleteDeckMutation, useUpdateDeckMutation } from '../../../../services/decks'
 import { DecksResponse } from '../../../../services/decks/types.ts'
-
-import { DeleteDecksModal } from './deleteDecksModal/deleteDecksModal.tsx'
-import { EditDecksModal } from './editDecksModal/editDecksModal.tsx'
+import { DeleteDecksModal } from '../../deleteDecksModal/deleteDecksModal.tsx'
+import { EditDecksModal } from '../../editDecksModal/editDecksModal.tsx'
 
 type DecksItemPropsType = {
   data: DecksResponse | undefined

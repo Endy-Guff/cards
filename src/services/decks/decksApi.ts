@@ -55,8 +55,10 @@ const decksApi = baseApi.injectEndpoints({
         query: ({ id }) => {
           return {
             url: `v1/decks/${id}`,
+            method: 'GET',
           }
         },
+        providesTags: ['Decks'],
       }),
     }
   },

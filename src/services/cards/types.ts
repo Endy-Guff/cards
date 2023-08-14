@@ -37,3 +37,5 @@ export type CreateCardArgs = {
   questionVideo?: string
   answerVideo?: string
 }
+
+export type EditCardArgs = CreateCardArgs
