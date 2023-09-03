@@ -7,3 +7,14 @@ export type MeResponse = {
   created: string
   updated: string
 }
+
+export type LoginArgs = {
+  password: string
+  email: string
+  rememberMe: boolean
+}
+
+export type SignUpArgs = {
+  email: string
+  password: string
+}

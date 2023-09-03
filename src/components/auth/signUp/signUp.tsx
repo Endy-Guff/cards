@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { DevTool } from '@hookform/devtools'
+// import { DevTool } from '@hookform/devtools'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
@@ -30,7 +30,7 @@ export const SignUp: FC<SignUpPropsType> = ({ onSubmit: onSubmitCallback }) => {
     <Card className={s.wrapper}>
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* RHF devTool */}
-        <DevTool control={control} />
+        {/*<DevTool control={control} />*/}
         {/* RHF devTool */}
 
         <Typography.Large className={s.title}>Sign Up</Typography.Large>
