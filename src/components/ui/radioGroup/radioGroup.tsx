@@ -6,7 +6,7 @@ import { Typography } from '../typography'
 
 import s from './radioGroup.module.scss'
 
-type Option = {
+export type Option = {
   label: string
   value: string
 }

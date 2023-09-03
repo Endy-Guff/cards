@@ -13,8 +13,16 @@ type EditCardModalPropsType = {
   open: boolean
   onClose: () => void
   onSubmitCallback: (data: AddCardSchema) => void
+  question: string
+  answer: string
 }
-export const EditCardModal: FC<EditCardModalPropsType> = ({ open, onClose, onSubmitCallback }) => {
+export const EditCardModal: FC<EditCardModalPropsType> = ({
+  open,
+  onClose,
+  onSubmitCallback,
+  question,
+  answer,
+}) => {
   const {
     handleSubmit,
     formState: { errors },
@@ -35,7 +43,7 @@ export const EditCardModal: FC<EditCardModalPropsType> = ({ open, onClose, onSub
             control={control}
             name={'question'}
             label={'Question'}
-            defaultValue={''}
+            defaultValue={question}
             errorMessage={errors.question?.message}
             className={s.textField}
           />
@@ -43,7 +51,7 @@ export const EditCardModal: FC<EditCardModalPropsType> = ({ open, onClose, onSub
             control={control}
             name={'answer'}
             label={'Answer'}
-            defaultValue={''}
+            defaultValue={answer}
             errorMessage={errors.answer?.message}
             className={s.textField}
           />

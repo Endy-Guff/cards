@@ -20,6 +20,7 @@ import { EditDecksModal } from '../decks/editDecksModal/editDecksModal.tsx'
 import { AddCardModal } from './addCardModal/addCardModal.tsx'
 import s from './cards.module.scss'
 import { CardsTable } from './cardsTable/cardsTable.tsx'
+import { LearnDeckModal } from './learnDeckModal/learnDeckModal.tsx'
 export const Cards = () => {
   const params = useParams<{ deckId: string }>()
   const navigate = useNavigate()
@@ -31,6 +32,7 @@ export const Cards = () => {
   const [addCardModalIsOpen, setAddCardModalIsOpen] = useState<boolean>(false)
   const [deleteDeckModalIsOpen, setDeleteDeckModalIsOpen] = useState<boolean>(false)
   const [editDeckModalIsOpen, setEditDeckModalIsOpen] = useState<boolean>(false)
+  const [learnDeckModalIsOpen, setLearnDeckModalIsOpen] = useState<boolean>(false)
 
   const { setItemsPerPage, setCurrentPage } = cardsActions
 
@@ -65,6 +67,10 @@ export const Cards = () => {
     navigate('/')
   }
 
+  const learnDeckHandler = () => {
+    setLearnDeckModalIsOpen(true)
+  }
+
   const editDeckHandler = (data: AddPackSchema) => {
     editDeck({ name: data.namePack, id: deckData!.id, isPrivate: data.private })
   }
@@ -90,6 +96,12 @@ export const Cards = () => {
         onClose={() => setEditDeckModalIsOpen(false)}
         onSubmitCallback={editDeckHandler}
       />
+      <LearnDeckModal
+        open={learnDeckModalIsOpen}
+        packId={params.deckId!}
+        packName={deckData!.name}
+        onClose={() => setLearnDeckModalIsOpen(false)}
+      />
       <Page>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '36px' }}>
           <NavLink
@@ -106,6 +118,7 @@ export const Cards = () => {
             showDropDown={true}
             deleteCallback={showDeleteDeckModal}
             editCallback={showEditDeckModal}
+            learnCallback={learnDeckHandler}
           >
             <Typography.Large>{deckData?.name}</Typography.Large>
           </PagesHeader>

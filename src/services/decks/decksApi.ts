@@ -8,6 +8,9 @@ import {
   GetDecksArgs,
   UpdateDeckArgs,
   UpdateDeckResponse,
+  LearnDeckCard,
+  LearnGradeArgs,
+  LearnGrade,
 } from './types.ts'
 
 const decksApi = baseApi.injectEndpoints({
@@ -60,6 +63,23 @@ const decksApi = baseApi.injectEndpoints({
         },
         providesTags: ['Decks'],
       }),
+      learnDeck: builder.query<LearnDeckCard, { id: string }>({
+        query: ({ id }) => {
+          return {
+            url: `/v1/decks/${id}/learn`,
+            method: 'GET',
+          }
+        },
+      }),
+      learnGrade: builder.mutation<LearnGrade, LearnGradeArgs>({
+        query: ({ id, grade, cardId }) => {
+          return {
+            url: `/v1/decks/${id}/learn`,
+            method: 'POST',
+            body: { cardId, grade },
+          }
+        },
+      }),
     }
   },
 })
@@ -70,4 +90,6 @@ export const {
   useDeleteDeckMutation,
   useUpdateDeckMutation,
   useGetDeckByIdQuery,
+  useLearnDeckQuery,
+  useLearnGradeMutation,
 } = decksApi

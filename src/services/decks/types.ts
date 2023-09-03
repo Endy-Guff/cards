@@ -38,6 +38,33 @@ export type Deck = {
   author: DecksResponseItemAuthor
 }
 
+export type LearnDeckCard = {
+  id: string
+  deckId: string
+  userId: string
+  question: string
+  answer: string
+  shots: number
+  answerImg: string
+  questionImg: string
+  questionVideo: string
+  answerVideo: string
+  rating: number
+  created: string
+  updated: string
+}
+
+export type LearnGradeArgs = {
+  id: string
+  cardId: string
+  grade: number
+}
+
+export type LearnGrade = {
+  cardId: string
+  grade: number
+}
+
 export type DeleteDeckResponse = Omit<Deck, 'isDeleted' | 'isBlocked' | 'author'>
 
 export type UpdateDeckArgs = CreateDeckArgs & { id: string }

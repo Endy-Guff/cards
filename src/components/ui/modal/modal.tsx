@@ -12,9 +12,9 @@ type ModalPropsType = {
   showHeader?: boolean
   showCloseButton?: boolean
   open: boolean
-  title: string
+  title?: string
   children: ReactNode
-  closeModal: () => void
+  closeModal?: () => void
 }
 
 export const Modal: FC<ModalPropsType> = ({
