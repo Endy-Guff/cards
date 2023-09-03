@@ -46,9 +46,11 @@ export const CardsItem: FC<CardsItemPropsType> = ({ data }) => {
           deleteCard={deleteCardHandler}
         />
         <EditCardModal
-          open={deleteCardId === id ? editCardModalIsOpen : false}
+          open={editCardId === id ? editCardModalIsOpen : false}
           onClose={() => setEditCardModalIsOpen(false)}
           onSubmitCallback={updateCardFormSubmit}
+          question={question}
+          answer={answer}
         />
         <Table.Row key={id}>
           <Table.Cell>{question}</Table.Cell>

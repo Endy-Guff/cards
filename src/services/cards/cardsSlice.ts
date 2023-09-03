@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 const initialState = {
   currentPage: 1,
   itemsPerPage: 15,
+  currentDeckId: null as null | string,
 }
 
 export const cardsSlice = createSlice({
@@ -14,6 +15,9 @@ export const cardsSlice = createSlice({
     },
     setItemsPerPage: (state, action: PayloadAction<{ itemsPerPage: number }>) => {
       state.itemsPerPage = action.payload.itemsPerPage
+    },
+    setCurrentDeckId: (state, action: PayloadAction<{ id: string }>) => {
+      state.currentDeckId = action.payload.id
     },
   },
 })
