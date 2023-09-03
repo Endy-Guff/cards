@@ -8,19 +8,26 @@ import {
   RouterProvider,
 } from 'react-router-dom'
 
-import { SignIn } from './components'
 import { Cards } from './pages/cards/cards.tsx'
 import { Decks } from './pages/decks/decks.tsx'
+import { SignInPage } from './pages/sign-in/sign-in.tsx'
+import { SignUpPage } from './pages/sign-up/sign-up.tsx'
+import { useGetMeQuery } from './services/auth'
 import { MeResponse } from './services/auth/types.ts'
 
 const publicRoutes: RouteObject[] = [
   {
     path: '/login',
-    element: <SignIn onSubmit={() => {}} />,
+    element: <SignInPage />,
+  },
+  {
+    path: '/sign-up',
+    element: <SignUpPage />,
   },
 ]
 
 const privateRoutes: RouteObject[] = [
+  { path: '*', element: <Navigate to={'/'} /> },
   {
     path: '/',
     element: <Decks />,
@@ -42,7 +49,10 @@ export const Router: FC<RouterPropsType> = () => {
 }
 
 function PrivateRoutes() {
-  const isAuth = true
+  const { data, isLoading } = useGetMeQuery()
+
+  if (isLoading) return <div>Loading...</div>
+  const isAuth = !!data
 
   return isAuth ? <Outlet /> : <Navigate to={'/login'} />
 }
